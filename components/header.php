@@ -1,4 +1,4 @@
-<?php define('ROOT_DIR', 'http://localhost/theatreV1/');
+<?php define('ROOT_DIR', 'http://localhost:8040/theatreV1/');
 ?>
 <!doctype html>
 <html lang="en">

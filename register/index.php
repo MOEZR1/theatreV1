@@ -15,8 +15,7 @@
                     <p>Enter your information to register</p>
                 </div>
                 <form action="../account/auth/register.php" method="post">
-                <input type="hidden" name="active" value="1">
-                <input type="hidden" name="is_admin" value="1">
+               
                 <div>
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">

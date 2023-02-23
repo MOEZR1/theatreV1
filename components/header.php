@@ -1,4 +1,10 @@
-<?php define('ROOT_DIR', 'http://localhost:8040/theatreV1/');
+<?php 
+    //display PHP errors to make debugging easier
+// Comment this out when you are finished with the website.
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    define('ROOT_DIR', 'http://localhost:8040/theatreV1/');
 ?>
 <!doctype html>
 <html lang="en">

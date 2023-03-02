@@ -1,5 +1,9 @@
 
-    <?php include 'components/header.php'; ?>
+<?php 
+    session_start();
+    include 'components/header.php';
+    include 'account/auth/dbConfig.php';
+?>
   <div class="bg-gray-50 flex items-center">
     <section class="w-full bg-cover bg-center py-32" style="background-image: url('<?= ROOT_DIR ?>/assets/images/header-bg.jpg');">
       <div class="container mx-auto text-center text-white">

@@ -11,4 +11,12 @@
 /* When input gains focus, add a blue border below it */
 #searchInput:focus {
   border-bottom: 2px solid #4575b6;
+}
+
+#delete-modal {
+  display: none;
+}
+
+.delete-show {
+  display: flex;
 }/*# sourceMappingURL=app.css.map */

@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    include '../../auth/dbConfig.php';
-    include '../../../components/header.php'; 
-    include '../../../components/navigation.php'; 
+    include '../../../auth/dbConfig.php';
+    include '../../../../components/header.php'; 
+    include '../../../../components/navigation.php'; 
 
     $users = $conn->prepare('SELECT 
         u.id,
@@ -121,7 +121,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
               </svg>
           </button>
           <button>
-            <a x-data="{ tooltip: 'Edite' }" onclick="window.location.href='./edit.php';">
+            <a x-data="{ tooltip: 'Edite' }" onclick="window.location.href='../pages/editUser.php';">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -140,7 +140,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
             </a>
             </buttn>
             <?php if ($userActive == 1): ?>
-            <button onclick="window.location.href='./deactivateUser.php?uid=<?= $userID ?>';">
+            <button onclick="window.location.href='../config/deactivateUser.php?uid=<?= $userID ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
@@ -157,7 +157,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
               </svg>
             </button>
           <?php elseif ($userActive == 0): ?>
-          <button onclick="window.location.href='./activateUser.php?uid=<?= $userID ?>';">
+          <button onclick="window.location.href='../config/activateUser.php?uid=<?= $userID ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
@@ -238,4 +238,4 @@ const deleteBtn = document.querySelectorAll('.delete-btn').forEach(item => {
 
 
     </script>
-  <?php include '../../../components/footer.php'; ?>
+  <?php include '../../../../components/footer.php'; ?>

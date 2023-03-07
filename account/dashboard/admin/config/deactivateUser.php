@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include '../../auth/dbConfig.php';
+include '../../../auth/dbConfig.php';
 
 
 // if (!isset($_SESSION['loggedin'])) {
@@ -14,4 +14,4 @@ $stmt = $conn->prepare('UPDATE users usr
     where id = '.$uid.' ');
 
 $stmt->execute();
-header("Location: ./user.php");
+header("Location: ../pages/user.php");

@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    include '../../../components/header.php';
-    include '../../../components/navigation.php'; 
+    include '../../../../components/header.php';
+    include '../../../../components/navigation.php'; 
 ?>
 <section class=" py-1 bg-blueGray-50">
 <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
@@ -119,5 +119,5 @@
   </div>
 </div>
 </section>
-<?php include '../../../components/footer.php'; ?>
+<?php include '../../../../components/footer.php'; ?>
 

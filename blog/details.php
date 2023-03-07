@@ -3,30 +3,68 @@
     include '../components/header.php';
     include '../components/navigation.php';
     include '../account/auth/dbConfig.php';
+
+    $blogID = $_GET['blog_id'];
+  
+
+    $blogDetails = $conn->prepare('SELECT 
+	
+    b.id,
+    b.title,
+    b.blog_content,
+    b.created_on,
+    b.img_path
+
+   FROM userBlog ub
+   LEFT JOIN blog b ON ub.fk_blog_id = b.id
+   where b.id= '. $blogID .'
+   
+  ');
+$blogDetails->execute();
+$blogDetails->store_result();
+$blogDetails->bind_result($blogID, $blogTitle, $blogContent, $blogCreated, $imgPath);
+$blogDetails->fetch();
+
+// comments
+$comments = $conn->prepare('SELECT 
+	
+c.id,
+c.heading,
+c.comment,
+c.date_added,
+c.pending,
+u.username
+
+FROM comments c
+LEFT JOIN userBlog ub ON c.fk_userBlog = ub.id
+LEFT JOIN blog b ON ub.fk_blog_id = b.id
+LEFT JOIN users u ON ub.fk_user_id = u.id
+where ub.fk_blog_id= '. $blogID .'
+
+');
+$comments->execute();
+$comments->store_result();
+$comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $username);
 ?>
-<!-- Blog component -->
+
 <section class="bg-white dark:bg-gray-900">
-    <div class="flex justify-center min-h-screen">
-        <div class="hidden bg-cover lg:block lg:w-2/5" style="background-image: url('<?= ROOT_DIR ?>assets/images/mary_poppins.jpg'); background-position: center;">
+    <div class="flex justify-center blog-mob">
+        <div class=" bg-cover lg:block lg:w-2/5" style="background-image: url('<?= ROOT_DIR ?>assets/images/shows/<?= $imgPath ?>'); background-position: center;">
         </div>
 
         <div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div class="w-full">
                 <h1 class="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
-                    Mary Poppins
-                </h1>
+                <?= $blogTitle ?>
+            </h1>
 
-                <p class="mt-4 text-gray-500 dark:text-gray-400">Saturday 1st February, 2023</p>
+                <p class="mt-4 text-gray-500 dark:text-gray-400">Added on: <?= $blogCreated ?></p>
                 <hr>
                 <div class="mt-6">
-                    <p class="mt-4 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!</p>    
-                </div>    
-                <div class="mt-6">
-                    <p class="mt-4 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!</p>    
-                </div> 
-                <div class="mt-6">
-                    <p class="mt-4 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!</p>    
-                </div>    
+                    <pre class="mt-4 text-gray-500 dark:text-gray-400">
+                        <?= $blogContent ?>
+                    </pre>    
+                </div>      
             </div>
             
         </div>
@@ -87,50 +125,65 @@
 			</div>
 		</div>        
         <?php else: ?>
+            <?php $userID = $_SESSION['id']; ?>
+        <!-- comment box -->
         <div class="container mx-auto">
-			<div class="flex justify-center px-6 my-12">
-				<!-- Row -->
-				<div class="w-full xl:w-3/4 lg:w-11/12 flex">
-					<!-- Col -->
-					<div
-						class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-						style="background-image: url('https://source.unsplash.com/oWTW-jNGl9I/600x800')"
-					></div>
-					<!-- Col -->
-					<div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
-						<div class="px-8 mb-4 text-center">
-							<h3 class="pt-4 mb-2 text-2xl">Leave a comment</h3>
-							<p class="mb-4 text-sm text-gray-700">
-								Your post will be visible once it as been approved by our admin
-							</p>
-						</div>
-						<div class="max-w-2xl mx-auto">
-
-	<form>
-    <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-        <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
-            <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600"> 
-                <div class="flex flex-wrap items-center space-x-1 sm:pl-4">
-                <p class="mb-4 text-sm text-gray-700">Leave a comment</p>
+    <div class="flex justify-center px-6 my-12">
+        <!-- Row -->
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+            <!-- Col -->
+            <div
+                class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+                style="background-image: url('https://source.unsplash.com/oWTW-jNGl9I/600x800')">
+            </div>
+            <!-- Col -->
+            <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+                <div class="px-8 mb-4 text-center">
+                    <h3 class="pt-4 mb-2 text-2xl">Leave a comment</h3>
+                    <p class="mb-4 text-sm text-gray-700">
+                        Your post will be visible once it as been approved by our admin
+                    </p>
                 </div>
+                <div class="max-w-2xl mx-auto">
+                    <form action="../account/dashboard/user/addComment.php?blog_id=<?= $blogID ?>" method="post">
+                        <input type="hidden" name="fk_user_id" value="<?= $userID ?>">
+                        <input type="hidden" name="fk_blog_id" value="<?= $blogID ?>">
+                        <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                            <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
+                                <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600"> 
+                                    <div class="flex flex-wrap items-center space-x-1 sm:pl-4">
+                                        <p class="mb-4 text-sm text-gray-700">Leave a comment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="heading">
+									Comment Heading
+								</label>
+								<input
+									class="w-full mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+									id="heading"
+									type="text"
+									placeholder="Enter heading..."
+                                    name="heading"
+								/>
+                        </div>
+                        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
+                            <label for="editor" class="sr-only"></label>
+                            <textarea name="comment" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Add your comment" required></textarea>
+                        </div>
+                        <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                            Comment
+                        </button>
+                    </form>
+                </div>  
             </div>
         </div>
-        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
-            <label for="editor" class="sr-only"></label>
-            <textarea id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Add your comment" required></textarea>
-        </div>
     </div>
-    <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-        Comment
-    </button>
-    </form>
-
 </div>
-					</div>
-				</div>
-			</div>
-		</div>
-        <?php endif ?>
+<?php endif ?>
 </section>
 <!-- Comments component -->
 <div class="p-8">
@@ -140,37 +193,28 @@
             <p class="text-center text-gray-600 text-sm mt-2">Sign in to leave a comment</p>
             <?php endif ?>
         <div class="space-y-12 px-2 xl:px-16 mt-12">
+            <hr>
+        <?php while ($comments->fetch()): ?>
+            <?php if ($pending == 0): ?>
+
             <div class="mt-4 flex">
                 <div>
+                    <p>Comment by: <?= $username?> On: <?= $cDateAdded ?> </p>
                     <div class="flex items-center h-16">
-                        <span class="text-lg text-blue-600 font-bold">Lorem ipsum dolor sit amet?</span>
+                        <span class="text-lg text-blue-600 font-bold"><?= $cHeading ?></span>
                     </div>
                     <div class="flex items-center py-2">
-                        <span class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, dignissimos. Neque eos, dignissimos provident reiciendis debitis repudiandae commodi perferendis et itaque, similique fugiat cumque impedit iusto vitae dolorum. Nostrum, fugit!</span>
+                        <span class="text-gray-500"><?= $comment ?></span>
 
                     </div>
                 </div>
             </div>
-    
-            <div class="mt-4 flex">
-                <div>
-                    <div class="flex items-center h-16 border-l-4 border-blue-600">
-                        <span class="text-4xl text-blue-600 px-4">Q.</span>
-                    </div>
-                    <div class="flex items-center h-16 border-l-4 border-gray-400">
-                        <span class="text-4xl text-gray-400 px-4">A.</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-center h-16">
-                        <span class="text-lg text-blue-600 font-bold">Impedit iusto vitae dolorum, nostrum fugit?</span>
-                    </div>
-                    <div class="flex items-center py-2">
-                        <span class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, dignissimos. Neque eos, dignissimos provident reiciendis debitis repudiandae commodi perferendis et itaque, similique fugiat cumque impedit iusto vitae dolorum. Nostrum, fugit!</span>
+            <hr>
+            <?php else: ?>
+                <h6 class="text-4xl text-gray-800 tracking-widest text-center">There are no comments yet</h4>
 
-                    </div>
-                </div>
-            </div>
+            <?php endif ?>
+            <?php endwhile ?>
         </div>
     </div>
 </div>

@@ -41,7 +41,7 @@ $pendingComment->bind_result($commentID, $commentDetails, $username, $bID, $blog
         
             <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
                 <div class="relative flex items-end overflow-hidden rounded-xl">
-                    <img src="<?= ROOT_DIR ?>assets/images/<?= $blogImg ?>" alt="<?= $showName ?>" />
+                    <img src="<?= ROOT_DIR ?>assets/images/shows/<?= $blogImg ?>" alt="<?= $showName ?>" />
                 </div>
                 <div class="mt-1 p-2">
                     <h2 class="text-slate-700"><?= $blogTitle ?></h2>

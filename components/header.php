@@ -8,8 +8,8 @@
     // define('ROOT_DIR', 'http://localhost:8040/theatreV1/');
     // define('AUTH_DIR', 'http://localhost:8040//theatreV1/account/dashboard/');
 // for use on college pc in room 13
-    define('ROOT_DIR', 'http://localhost/theatreV1/');
-    define('AUTH_DIR', 'http://localhost/theatreV1/account/dashboard/');
+    define('ROOT_DIR', 'http://localhost:8040/theatreV1/');
+    define('AUTH_DIR', 'http://localhost:8040/theatreV1/account/dashboard/');
 ?>
 <!doctype html>
 <html lang="en">

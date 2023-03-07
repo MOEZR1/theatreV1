@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include '../../auth/dbConfig.php';
-    include '../../../components/header.php';
-    include '../../../components/navigation.php';
+    include '../../../auth/dbConfig.php';
+    include '../../../../components/header.php';
+    include '../../../../components/navigation.php';
 
     $blogID = $_GET['blog_id'];
     // $userID = $_GET['user_id'];
@@ -87,7 +87,7 @@ $pendingComment->bind_result($commentID, $commentDetails, $commentHeading, $user
         <h4 class="text-4xl font-bold text-gray-800 tracking-widest uppercase text-center">Pending Comments</h4>
         <div class="space-y-12 px-2 xl:px-16 mt-12">
    
-            <div class="mt-4 flex">
+            <div class="mt-4 flex items-center direction-col">
             <?php while ($pendingComment->fetch()): ?>
 
                 <div>
@@ -103,7 +103,7 @@ $pendingComment->bind_result($commentID, $commentDetails, $commentHeading, $user
 
                     </div>
                     <button 
-                    onclick="window.location.href='publishComment.php?cid=<?= $commentID ?>';"
+                    onclick="window.location.href='../config/publishComment.php?cid=<?= $commentID ?>';"
                     class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                             Publish
                         </button>

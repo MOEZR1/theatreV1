@@ -1,7 +1,7 @@
 
 <?php
     session_start();
-     include '../../auth/dbConfig.php';
+     include '../../../auth/dbConfig.php';
 
     $userID = $_SESSION['id'];
 
@@ -14,6 +14,6 @@
 
   
 
-    header("Location: ../../../blog/");
+    header("Location: ../../../../pages/blog/");
 
 ?>

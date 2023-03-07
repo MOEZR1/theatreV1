@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2023 at 10:45 AM
+-- Generation Time: Mar 07, 2023 at 01:04 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -41,8 +41,10 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `title`, `blog_content`, `created_on`, `img_path`, `show_name`) VALUES
-(8, 'Pretty Woman', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-05', 'pretty_woman.jpeg', 'Mary Poppins'),
-(13, 'Shrek is Back!', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n', '2023-03-06', 'shrek_the_movie.jpeg', 'Shrek the Movie');
+(8, 'Pretty Woman', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-05', 'pretty_woman.jpeg', 'Mary Poppins'),
+(13, 'Shrek is Back!', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-06', 'shrek_the_movie.jpeg', 'Shrek the Movie'),
+(14, 'Life of Pi', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-07', 'life_of_pi.jpeg', 'Life of Pi'),
+(15, 'Grease is as slick as ever!', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-07', 'grease_musical.jpg', 'Grease');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,12 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `heading`, `comment`, `date_added`, `fk_userBlog`, `pending`) VALUES
 (17, 'I love this musical', 'This is a comment for pretty woman', '2023-03-06', 27, 0),
 (18, 'Another comment for pretty woman', 'more info here', '2023-03-06', 28, 0),
-(19, 'comment header', 'comment ', '2023-03-07', 29, 0);
+(19, 'comment header', 'comment ', '2023-03-07', 29, 0),
+(20, 'Pretty woman review (Tuesday)', 'asdf', '2023-03-07', 30, 0),
+(21, 'shrek comment', 'new comment', '2023-03-07', 33, 1),
+(22, 'shrek comment', 'new comment', '2023-03-07', 34, 1),
+(23, 'shrek comment', 'shrek comment', '2023-03-07', 35, 0),
+(24, 'shrek comment', 'shrek comment', '2023-03-07', 36, 0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +98,14 @@ INSERT INTO `userblog` (`id`, `fk_user_id`, `fk_blog_id`) VALUES
 (26, 14, 13),
 (27, 15, 8),
 (28, 14, 8),
-(29, 15, 8);
+(29, 15, 8),
+(30, 15, 8),
+(31, 14, 14),
+(32, 14, 15),
+(33, 14, 13),
+(34, 14, 13),
+(35, 14, 13),
+(36, 14, 13);
 
 -- --------------------------------------------------------
 
@@ -157,19 +171,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `userblog`
 --
 ALTER TABLE `userblog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `users`

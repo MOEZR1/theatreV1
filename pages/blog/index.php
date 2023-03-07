@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include '../account/auth/dbConfig.php';
-    include '../components/header.php';
-    include '../components/navigation.php';
+    include '../../account/auth/dbConfig.php';
+    include '../../components/header.php';
+    include '../../components/navigation.php';
     
 
     $blog = $conn->prepare('SELECT 
@@ -26,7 +26,7 @@ echo $blogID;
   <?php if (isset($_SESSION['loggedin']) == TRUE && ($_SESSION['is_admin']) == 1): ?>
   <div class="mt-3 flex items-end justify-center mb-10">
     <div class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-      <button onclick="window.location.href='../account/dashboard/admin/addBlog.php';" class="text-sm">ADD BLOG ARTICLE</button>
+      <button onclick="window.location.href='../../account/dashboard/admin/pages/addBlog.php';" class="text-sm">ADD BLOG ARTICLE</button>
     </div>
   </div>
   <?php endif ?>
@@ -94,5 +94,5 @@ echo $blogID;
   
 </section>
 <?php
-    include '../components/footer.php';
+    include '../../components/footer.php';
 ?>

@@ -1,5 +1,5 @@
 <?php
-  include '../../auth/dbConfig.php';
+  include '../../../auth/dbConfig.php';
 
 $cid = $_GET['cid'];
 $stmt = $conn->prepare('UPDATE comments c
@@ -8,4 +8,4 @@ $stmt = $conn->prepare('UPDATE comments c
     where c.id = '.$cid.' ');
 
 $stmt->execute();
-header("Location: pendingComments.php");
+header("Location: ../pages/pendingComments.php");

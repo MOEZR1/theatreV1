@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include '../../../components/header.php';
-    include '../../../components/navigation.php'; 
-    echo $_SESSION['id'];
+    include '../../../../components/header.php';
+    include '../../../../components/navigation.php'; 
+    // echo $_SESSION['id'];
 ?>
 <section class=" py-1 bg-blueGray-50">
 <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-      <form action="addBlogConfig.php" method="post">
+      <form action="../config/addBlogConfig.php" method="post">
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
           Blog Information
         </h6>
@@ -79,5 +79,5 @@
   </div>
 </div>
 </section>
-<?php include '../../../components/footer.php'; ?>
+<?php include '../../../../components/footer.php'; ?>
 

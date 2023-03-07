@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include '../components/header.php';
-    include '../components/navigation.php';
-    include '../account/auth/dbConfig.php';
+    include '../../components/header.php';
+    include '../../components/navigation.php';
+    include '../../account/auth/dbConfig.php';
 
     $blogID = $_GET['blog_id'];
   
@@ -145,7 +145,7 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                     </p>
                 </div>
                 <div class="max-w-2xl mx-auto">
-                    <form action="../account/dashboard/user/addComment.php?blog_id=<?= $blogID ?>" method="post">
+                    <form action="../../account/dashboard/user/addComment.php?blog_id=<?= $blogID ?>" method="post">
                         <input type="hidden" name="fk_user_id" value="<?= $userID ?>">
                         <input type="hidden" name="fk_blog_id" value="<?= $blogID ?>">
                         <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
@@ -189,36 +189,31 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
 <div class="p-8">
     <div class="bg-white p-4 rounded-lg shadow-xl py-8 mt-12">
         <h4 class="text-4xl font-bold text-gray-800 tracking-widest uppercase text-center">Comments</h4>
-        <?php if (!isset($_SESSION['loggedin'])): ?>
-            <p class="text-center text-gray-600 text-sm mt-2">Sign in to leave a comment</p>
-            <?php endif ?>
         <div class="space-y-12 px-2 xl:px-16 mt-12">
             <hr>
-        <?php while ($comments->fetch()): ?>
-            <?php if ($pending == 0): ?>
-
-            <div class="mt-4 flex">
-                <div>
-                    <p>Comment by: <?= $username?> On: <?= $cDateAdded ?> </p>
-                    <div class="flex items-center h-16">
-                        <span class="text-lg text-blue-600 font-bold"><?= $cHeading ?></span>
-                    </div>
-                    <div class="flex items-center py-2">
-                        <span class="text-gray-500"><?= $comment ?></span>
-
+            <?php if($comments->num_rows > 0 && $pending == 0): ?>
+                <?php while ($comments->fetch()): ?>
+                <div class="mt-4 flex">
+                    <div>
+                        <p>Comment by: <?= $username?> On: <?= $cDateAdded ?> </p>
+                        <div class="flex items-center h-16">
+                            <span class="text-lg text-blue-600 font-bold"><?= $cHeading ?></span>
+                        </div>
+                        <div class="flex items-center py-2">
+                            <span class="text-gray-500"><?= $comment ?></span>
+                        </div>
                     </div>
                 </div>
-            </div>
             <hr>
+            <?php endwhile ?>
             <?php else: ?>
-                <h6 class="text-4xl text-gray-800 tracking-widest text-center">There are no comments yet</h4>
+                <p class="mb-4 text-sm text-gray-700">There are no comments for this show yet</p>
 
             <?php endif ?>
-            <?php endwhile ?>
         </div>
     </div>
 </div>
 
 <?php 
-    include '../components/footer.php';
+    include '../../components/footer.php';
 ?>

@@ -18,22 +18,6 @@ $users->execute();
 $users->store_result();
 $users->bind_result($userID, $userName, $userEmail, $userActive);
 
-$pending = $conn->prepare('SELECT count(is_active)
-FROM vintageVinyl.album WHERE is_active = 0 ');
-
-$userComment = $conn->prepare('SELECT 
-COUNT(fk_user_id)
-
-FROM userBlog 
-WHERE fk_user_id = 15
-
-
-');
-$userComment->execute();
-$userComment->store_result();
-$userComment->bind_result($commentCount);
-$userComment->fetch();
-// echo $userComment;
 ?>
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!--Responsive Extension Datatables CSS-->
@@ -93,7 +77,6 @@ $userComment->fetch();
 						<th data-priority="2">Username</th>
 						<th data-priority="3">email</th>
 						<th data-priority="4">Status</th>
-						<th data-priority="5">Comments</th>
 						<th data-priority="6">Manage</th>
 					</tr>
 				</thead>
@@ -117,7 +100,7 @@ $userComment->fetch();
           </span>
           <?php endif ?>
             </td>
-						<td><?= $commentCount ?></td>
+					
 						<td>
             <div class="flex justify-end gap-4">
             <button data-user-id="<?= $userID ?>" x-data="{ tooltip: 'Delete' }" class="delete-btn">

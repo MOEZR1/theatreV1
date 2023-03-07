@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    include '../../auth/dbConfig.php';
-    include '../../../components/header.php';
-    include '../../../components/navigation.php'; 
+    include '../../../auth/dbConfig.php';
+    include '../../../../components/header.php';
+    include '../../../../components/navigation.php'; 
 
     $pendingComment = $conn->prepare('SELECT 
     c.id,
@@ -71,5 +71,5 @@ $pendingComment->bind_result($commentID, $commentDetails, $username, $bID, $blog
 
 <?php 
   
-    include '../../../components/footer.php'; 
+    include '../../../../components/footer.php'; 
 ?>

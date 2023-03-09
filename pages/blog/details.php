@@ -146,7 +146,7 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                     </p>
                 </div>
                 <div class="max-w-2xl mx-auto">
-                    <form action="../../account/dashboard/user/addComment.php?blog_id=<?= $blogID ?>" method="post">
+                    <form action="../account/dashboard/user/addComment.php?blog_id=<?= $blogID ?>" method="post">
                         <input type="hidden" name="fk_user_id" value="<?= $userID ?>">
                         <input type="hidden" name="fk_blog_id" value="<?= $blogID ?>">
                         <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">

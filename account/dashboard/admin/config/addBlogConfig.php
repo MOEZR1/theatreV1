@@ -14,6 +14,6 @@
 
   
 
-    header("Location: ../../../../pages/blog/");
+    header("Location: ../../../../blogs");
 
 ?>

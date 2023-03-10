@@ -5,25 +5,22 @@
     include '../../account/auth/dbConfig.php';
 
     $blogID = $_GET['blog_id'];
-  
 
     $blogDetails = $conn->prepare('SELECT 
-	
     b.id,
     b.title,
     b.blog_content,
     b.created_on,
     b.img_path
-
    FROM userBlog ub
    LEFT JOIN blog b ON ub.fk_blog_id = b.id
    where b.id= '. $blogID .'
    
   ');
-$blogDetails->execute();
-$blogDetails->store_result();
-$blogDetails->bind_result($blogID, $blogTitle, $blogContent, $blogCreated, $imgPath);
-$blogDetails->fetch();
+    $blogDetails->execute();
+    $blogDetails->store_result();
+    $blogDetails->bind_result($blogID, $blogTitle, $blogContent, $blogCreated, $imgPath);
+    $blogDetails->fetch();
 
 // comments
 $comments = $conn->prepare('SELECT 
@@ -47,12 +44,8 @@ $comments->execute();
 $comments->store_result();
 $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $username, $active);
 ?>
-
 <section class="bg-white dark:bg-gray-900">
     <div class="flex justify-center blog-mob">
-        <div class=" bg-cover lg:block lg:w-2/5" style="background-image: url('<?= ROOT_DIR ?>assets/images/shows/<?= $imgPath ?>'); background-position: center;">
-        </div>
-
         <div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div class="w-full">
                 <h1 class="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
@@ -80,7 +73,7 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
 					<!-- Col -->
 					<div
 						class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-						style="background-image: url('https://source.unsplash.com/oWTW-jNGl9I/600x800')"
+						style="background-image: url('../assets/images/shows/<?= $imgPath ?>')"
 					></div>
 					<!-- Col -->
 					<div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -124,7 +117,8 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                    
 				</div>
 			</div>
-		</div>        
+		</div>   
+        
         <?php else: ?>
             <?php $userID = $_SESSION['id']; ?>
         <!-- comment box -->
@@ -135,7 +129,7 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
             <!-- Col -->
             <div
                 class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-                style="background-image: url('https://source.unsplash.com/oWTW-jNGl9I/600x800')">
+                style="background-image: url('../assets/images/shows/<?php $imgPath ?>')">
             </div>
             <!-- Col -->
             <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">

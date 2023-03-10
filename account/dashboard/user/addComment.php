@@ -14,6 +14,6 @@
     $addUserBlog->execute();
     $addComment->execute();
 
-    header("Location: ../../../pages/blog/details.php?blog_id=$blogID");
+    header("Location: ../../../blogDetails/$blogID");
 
 ?>

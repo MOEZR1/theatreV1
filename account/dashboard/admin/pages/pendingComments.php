@@ -7,6 +7,7 @@
     $pendingComment = $conn->prepare('SELECT 
     c.id,
     c.comment,
+    c.heading,
     -- c.fk_userBlog
     u.username,
     b.id,
@@ -26,38 +27,16 @@
   ');
 $pendingComment->execute();
 $pendingComment->store_result();
-$pendingComment->bind_result($commentID, $commentDetails, $username, $bID, $blogTitle, $blogContent, $blogImg, $showName);
+$pendingComment->bind_result($commentID, $commentDetails,$heading, $username, $bID, $blogTitle, $blogContent, $blogImg, $showName);
 
 ?>
 
 <div class="bg-white pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
   <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-4xl sm:px-6 lg:px-8">
-      <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
-        <div>
-          <p class="text-xl font-bold text-gray-900">Open Positions</p>
-          <p class="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-500">Lorem ipsum dolor sit amet, consectetur
-              adipis</p>
-        </div>
-        <div class="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
-          <p class="sr-only">Search Position</p>
-          <div class="relative">
-            <div class="flex items-center pt-0 pr-0 pb-0 pl-3 absolute inset-y-0 left-0 pointer-events-none">
-              <p>
-                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21
-                    21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-              </p>
-            </div>
-            <input placeholder="Search Positions " type="search" class="border block pt-2 pr-0 pb-2 pl-10 w-full py-2
-                pl-10 border border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"/>
-          </div>
-        </div>
-      </div>
-      <?php if ($pendingComment->num_rows == 0): ?>
+     <?php if ($pendingComment->num_rows == 0): ?>
         <h3>There are no comments pending</h3>
-
-                <?php else: ?>
+          <?php else: ?>
 
       <div class="shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
       <?php while ($pendingComment->fetch()): ?>
@@ -69,7 +48,7 @@ $pendingComment->bind_result($commentID, $commentDetails, $username, $bID, $blog
                 <img
                     src="<?=ROOT_DIR ?>assets/images/shows/<?= $blogImg ?>" class="flex-shrink-0 object-cover rounded-full btn- w-10 h-10"/>
                 <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                  <p class="text-lg font-bold text-gray-800 truncate"><?= $blogTitle ?></p>
+                  <p class="text-lg font-bold text-gray-800 truncate"><?= $heading ?></p>
                   <p class="text-gray-600 text-md"><?= $username ?></p>
                 </div>
               </div>

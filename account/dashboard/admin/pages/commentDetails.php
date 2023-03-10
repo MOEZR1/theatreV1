@@ -8,6 +8,7 @@
     $commentDetails = $conn->prepare('SELECT 
     c.id,
     c.comment,
+    c.heading,
     -- c.fk_userBlog
     u.id,
     u.username,
@@ -27,7 +28,7 @@
     ');
     $commentDetails->execute();
     $commentDetails->store_result();
-    $commentDetails->bind_result($commentID, $commentDetails, $uid, $username, $bID, $blogTitle, $blogContent, $blogImg, $showName);
+    $commentDetails->bind_result($commentID, $commentDetails, $heading, $uid, $username, $bID, $blogTitle, $blogContent, $blogImg, $showName);
     $commentDetails->fetch();
     ?>
     <div class="overflow-y-auto sm:p-0 pt-4 pr-4 pb-20 pl-4 bg-gray-800">
@@ -43,7 +44,7 @@
               <img
                   src="<?= ROOT_DIR ?>assets/images/shows/<?= $blogImg ?>" class="flex-shrink-0 object-cover object-center btn- flex w-16 h-16 mr-auto -mb-8 ml-auto rounded-full shadow-xl">
               <p class="mt-8 text-2xl font-semibold leading-none text-white tracking-tighter lg:text-3xl">
-              <?=$blogTitle ?></p>
+              <?=$heading ?></p>
               <p class="mt-3 text-base leading-relaxed text-center text-gray-200"><?= $commentDetails ?></p>
               <p class="mt-3 text-base leading-relaxed text-center text-gray-200">Comment by: <?= $username ?></p>
 

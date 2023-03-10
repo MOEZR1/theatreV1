@@ -8,4 +8,4 @@ $stmt = $conn->prepare('UPDATE comments c
     where c.id = '.$cid.' ');
 
 $stmt->execute();
-header("Location: ../pages/pendingComments.php");
+header("Location: ../../../a/pendingComments");

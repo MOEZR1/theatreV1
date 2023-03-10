@@ -16,7 +16,7 @@
       ');
 $users->execute();
 $users->store_result();
-$users->bind_result($userID, $userName, $userEmail, $userActive);
+$users->bind_result($userId, $userName, $userEmail, $userActive);
 
 // passing the userid into the modal --  This is probably not the best way to do this, over time you will 
 // learn different ways of writing your programmes 
@@ -60,7 +60,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
 				<tbody>
         <?php while ($users->fetch()): ?>
 					<tr>
-						<td><?= $userID ?></td>
+						<td><?= $userId ?></td>
 						<td><?= $userName ?></td>
 						<td><?= $userEmail ?></td>
 						<td>
@@ -80,7 +80,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
 					
 						<td>
             <div class="flex justify-end gap-4">
-            <a class="delete-id" href="#" onclick="window.location.href='../components/deletePopup.php?userID=<?= $userID ?>;'">
+            <a class="delete-id" href="#" onclick="window.location.href='deleteUser/<?= $userId ?>'">
             <button  x-data="{ tooltip: 'Delete' }" class="delete-btn">
           
             <svg
@@ -101,7 +101,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
           </button>
           </a>
           <script>
-            function showPopup(userID) {
+            function showPopup(userId) {
               // Make an AJAX call to get the user details
               $.ajax({
                 url: "editUser.php",
@@ -136,7 +136,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
             </a>
             </buttn>
             <?php if ($userActive == 1): ?>
-            <button onclick="window.location.href='../config/deactivateUser.php?uid=<?= $userID ?>';">
+            <button onclick="window.location.href='../config/deactivateUser.php?uid=<?= $userId ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
@@ -153,7 +153,7 @@ $users->bind_result($userID, $userName, $userEmail, $userActive);
               </svg>
             </button>
           <?php elseif ($userActive == 0): ?>
-          <button onclick="window.location.href='../config/activateUser.php?uid=<?= $userID ?>';">
+          <button onclick="window.location.href='../config/activateUser.php?uid=<?= $userId ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 

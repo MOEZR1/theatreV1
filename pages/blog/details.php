@@ -40,7 +40,7 @@ FROM comments c
 LEFT JOIN userBlog ub ON c.fk_userBlog = ub.id
 LEFT JOIN blog b ON ub.fk_blog_id = b.id
 LEFT JOIN users u ON ub.fk_user_id = u.id
-where ub.fk_blog_id= '. $blogID .' AND c.pending = 0
+where ub.fk_blog_id= '. $blogID .' AND c.pending = 0 AND u.active = 0
 
 ');
 $comments->execute();

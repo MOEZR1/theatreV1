@@ -31,12 +31,14 @@ all the data via one id (the users) - This is why it is important to set up the 
 
     $userId = $_GET['uid'];
 
-    $deleteComments = $conn->prepare('DELETE FROM comments WHERE fk_userBlog IN (SELECT id FROM userBlog WHERE fk_user_id = 15)');
-    $deleteUserBlog = $conn->prepare('DELETE FROM userBlog WHERE fk_user_id = 15');
-    $deleteUser = $conn->prepare('DELETE FROM users WHERE users.id = 15');
+    $deleteComments = $conn->prepare('DELETE FROM comments WHERE fk_userBlog IN (SELECT id FROM userBlog WHERE fk_user_id = '.$userId.')');
+    $deleteUserBlog = $conn->prepare('DELETE FROM userBlog WHERE fk_user_id = '.$userId.'');
+    $deleteUser = $conn->prepare('DELETE FROM users WHERE users.id = '.$userId.' ');
 
     $deleteComments->execute();
     $deleteUserBlog->execute();
     $deleteUser->execute();
 
-    header('Location: a/allUsers');
+    header('Location: ../../../../a/allUsers');
+
+    ?>

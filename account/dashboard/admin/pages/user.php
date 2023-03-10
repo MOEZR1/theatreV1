@@ -8,15 +8,18 @@
         u.id,
         u.username,
         u.email,
-        u.active
+        u.active,
+        u.is_admin
 
        FROM users u
+
+       where u.is_admin = 0
 
        
       ');
 $users->execute();
 $users->store_result();
-$users->bind_result($userId, $userName, $userEmail, $userActive);
+$users->bind_result($userId, $userName, $userEmail, $userActive, $admin);
 
 // passing the userid into the modal --  This is probably not the best way to do this, over time you will 
 // learn different ways of writing your programmes 
@@ -136,7 +139,7 @@ $users->bind_result($userId, $userName, $userEmail, $userActive);
             </a>
             </buttn>
             <?php if ($userActive == 1): ?>
-            <button onclick="window.location.href='../config/deactivateUser.php?uid=<?= $userId ?>';">
+            <button onclick="window.location.href='deactivateUser/<?= $userId ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
@@ -153,7 +156,7 @@ $users->bind_result($userId, $userName, $userEmail, $userActive);
               </svg>
             </button>
           <?php elseif ($userActive == 0): ?>
-          <button onclick="window.location.href='../config/activateUser.php?uid=<?= $userId ?>';">
+          <button onclick="window.location.href='activateUser/<?= $userId ?>';">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 

@@ -3,11 +3,11 @@
 include '../../../auth/dbConfig.php';
 
 $bid = $_GET['bid'];
-$stmt = $conn->prepare('UPDATE users usr
+$stmt = $conn->prepare('UPDATE blog b
     set
-    usr.active = 0
-    where id = '.$uid.' ');
+    b.published = 0
+    where b.id = '.$bid.' ');
 
 $stmt->execute();
-header("Location: ../../a/allUsers");
+header("Location: ../../../../blogs");
 ?>

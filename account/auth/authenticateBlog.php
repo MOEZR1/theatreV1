@@ -1,4 +1,7 @@
 <?php
+// this is not being used yet 
+
+
 
 // We need to use sessions, so you should always start sessions using the below code.
 require 'dbConfig.php';

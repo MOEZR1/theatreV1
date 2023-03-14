@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2023 at 01:04 PM
+-- Generation Time: Mar 14, 2023 at 10:07 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -33,18 +33,17 @@ CREATE TABLE `blog` (
   `blog_content` varchar(644) NOT NULL,
   `created_on` date NOT NULL DEFAULT current_timestamp(),
   `img_path` varchar(32) DEFAULT NULL,
-  `show_name` varchar(64) DEFAULT NULL
+  `show_name` varchar(64) DEFAULT NULL,
+  `published` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`id`, `title`, `blog_content`, `created_on`, `img_path`, `show_name`) VALUES
-(8, 'Pretty Woman', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-05', 'pretty_woman.jpeg', 'Mary Poppins'),
-(13, 'Shrek is Back!', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-06', 'shrek_the_movie.jpeg', 'Shrek the Movie'),
-(14, 'Life of Pi', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-07', 'life_of_pi.jpeg', 'Life of Pi'),
-(15, 'Grease is as slick as ever!', 'Lorem ipsum dolor sit, amet consectetur adipisicin...\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit adipisci exercitationem quam ex id tenetur esse sint soluta, architecto earum consequuntur labore minus asperiores optio! Et aliquid fugiat sint ea!', '2023-03-07', 'grease_musical.jpg', 'Grease');
+INSERT INTO `blog` (`id`, `title`, `blog_content`, `created_on`, `img_path`, `show_name`, `published`) VALUES
+(8, 'Pretty Woman', 'Aimie Atkinson plays Vivian as wholesome but slightly harder-faced than Julia Roberts and does not have the latter’s all-eclipsing ebullience. Her romance with Danny Mac, as Edward, feels undercharged and, if anything, suggests the transactional relationship between an emotionally distant rich man and a sex worker. Discomforting lines emerge in songs: “I’ll be a hooker in a raincoat,” she says to Edward when he makes her look respectable on entering his upmarket hotel. “He will want to see you with your buttons undone,” a character sings, in another bilious moment.', '2023-03-05', 'pretty_woman.jpeg', 'Mary Poppins', 0),
+(13, 'Shrek is Back!', 'The chief appeal of the show lies in the fact that it reverses Oscar Wilde\'s dictum that \"it is better to be beautiful than to be good\". What it proves is that there is hope for all of us, however ill-favoured.\n\nAnd, even if the musical underplays Shrek\'s initial ferocity and Fiona\'s nocturnal transformation into witchy ugliness, it retains the movie\'s humour.\n\nGazing at the soaring, perpendicular towers of Farquaad\'s castle, Shrek enquires: \"Do you think he might be compensating for something?\" And, asked by the impatient Fiona if he has slain the fire-breathing dragon, Shrek evasively replies: \"It\'s on my to-do list.\"', '2023-03-06', 'shrek_the_movie.jpeg', 'Shrek the Movie', 0);
 
 -- --------------------------------------------------------
 
@@ -66,14 +65,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `heading`, `comment`, `date_added`, `fk_userBlog`, `pending`) VALUES
-(17, 'I love this musical', 'This is a comment for pretty woman', '2023-03-06', 27, 0),
 (18, 'Another comment for pretty woman', 'more info here', '2023-03-06', 28, 0),
-(19, 'comment header', 'comment ', '2023-03-07', 29, 0),
-(20, 'Pretty woman review (Tuesday)', 'asdf', '2023-03-07', 30, 0),
-(21, 'shrek comment', 'new comment', '2023-03-07', 33, 1),
-(22, 'shrek comment', 'new comment', '2023-03-07', 34, 1),
-(23, 'shrek comment', 'shrek comment', '2023-03-07', 35, 0),
-(24, 'shrek comment', 'shrek comment', '2023-03-07', 36, 0);
+(23, 'pretty woman comment', 'comment by user', '2023-03-14', 33, 0),
+(24, 'comment on shrek', 'comment by user', '2023-03-14', 34, 0);
 
 -- --------------------------------------------------------
 
@@ -92,20 +86,10 @@ CREATE TABLE `userblog` (
 --
 
 INSERT INTO `userblog` (`id`, `fk_user_id`, `fk_blog_id`) VALUES
-(11, 15, 8),
-(16, 15, 8),
-(17, 15, 8),
 (26, 14, 13),
-(27, 15, 8),
 (28, 14, 8),
-(29, 15, 8),
-(30, 15, 8),
-(31, 14, 14),
-(32, 14, 15),
-(33, 14, 13),
-(34, 14, 13),
-(35, 14, 13),
-(36, 14, 13);
+(33, 21, 8),
+(34, 21, 13);
 
 -- --------------------------------------------------------
 
@@ -128,9 +112,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `active`, `is_admin`) VALUES
 (14, 'admin', '$2y$10$bihFWrC8SLISdric/zq8lecnOKhO908Dkn8Hh43SZQ4bRmJ/h2yyC', 'admin@email.com', 1, 1),
-(15, 'user', '$2y$10$tCiq99p3PfLKj1VdWXEv4e.ZNyq.MFPQrauRLuLkg90DRUE7cgNWa', 'user@email.com', 1, 0),
-(16, 'user2', '$2y$10$sYWzIvh3ORu3PleHlHV4pOVy2K0SMSm7fkhfePJOisolRpWuq9Req', 'user2@email.com', 1, 0),
-(17, 'user3', '$2y$10$UnKYp0zvzquedzrTQU1l9.4PgCaC9.HRQmGphOP1IU9yPPK37RdTu', 'user3@email.com', 1, 0);
+(21, 'user', '$2y$10$JCn2kMK.j1U55hUmH4PUT.9L3q.tTDwkBHlfCO.Wq4Ea.6WORqEOG', 'user@email.com', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -171,7 +153,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -183,13 +165,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `userblog`
 --
 ALTER TABLE `userblog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

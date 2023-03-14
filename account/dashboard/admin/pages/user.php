@@ -103,24 +103,8 @@ $users->bind_result($userId, $userName, $userEmail, $userActive, $admin);
               </svg>
           </button>
           </a>
-          <script>
-            function showPopup(userId) {
-              // Make an AJAX call to get the user details
-              $.ajax({
-                url: "editUser.php",
-                data: { userId: userId },
-                success: function(data) {
-                  // Update the popup with the user details
-                  $(".modal-user-id").html(data);
-
-                  // Show the popup
-                  $("#delete_modal").addClass("delete-show");
-                }
-              });
-            }
-          </script>
           <button>
-            <a x-data="{ tooltip: 'Edite' }" onclick="window.location.href='../pages/editUser.php';">
+            <a x-data="{ tooltip: 'Edite' }" onclick="window.location.href='editUser/<?=$userId?>';">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

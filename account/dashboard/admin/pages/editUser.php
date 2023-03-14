@@ -1,7 +1,27 @@
 <?php 
     session_start();
+    include '../../../auth/dbConfig.php';
     include '../../../../components/header.php';
     include '../../../../components/navigation.php'; 
+
+    $userId = $_GET['uid'];
+
+// edit user query
+
+
+// total comments for the selected user
+$commentCount = $conn->prepare('SELECT 
+	
+COUNT(fk_user_id)
+
+FROM userBlog
+WHERE fk_user_id ='. $userId .'
+');
+$commentCount->execute();
+$commentCount->store_result();
+$commentCount->bind_result($commentsTotal);
+$commentCount->fetch();
+
 ?>
 <section class=" py-1 bg-blueGray-50">
 <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
@@ -11,10 +31,10 @@
         <h6 class="text-blueGray-700 text-xl font-bold">
           My account
         </h6>
-        <button onclick="window.location.href='./user.php';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-          User comments (15)
+        <button onclick="window.location.href='../../u/comments';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
+          User comments (<?=$commentsTotal ?>)
         </button>
-        <button onclick="window.location.href='./user.php';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
+        <button onclick="window.location.href='../allUsers';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
           All users
         </button>
       </div>

@@ -8,7 +8,7 @@
       <div class="container mx-auto text-center text-white">
         <h1 class="text-5xl font-medium mb-6">Welcome to Clyde Theatre</h1>
         <p class="text-xl mb-12">Unmissable theatre, whenever you want it..</p>
-        <a href="#" class="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600">WHAT'S ON</a>
+        <a href="<?php ROOT_DIR ?>blogs" class="text-white py-4 px-12 rounded-full hover:bg-indigo-600" style="background-color: #eab308">WHAT'S ON</a>
       </div>
     </section>
     

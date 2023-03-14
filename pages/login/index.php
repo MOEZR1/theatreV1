@@ -6,7 +6,7 @@
   <div class="rounded-xl bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
     <div class="text-white">
       <div class="mb-8 flex flex-col items-center">
-        <img src="https://www.logo.wine/a/logo/Instagram/Instagram-Glyph-Color-Logo.wine.svg" width="150" alt="" srcset="" />
+        <img src="<?php ROOT_DIR ?>assets/images/clyde_theatre_tp.png" width="120" alt="" srcset="" />
         <h1 class="mb-2 text-2xl">CLYDE THEATRE</h1>
         <span class="text-gray-300">Enter Login Details</span>
       </div>

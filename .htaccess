@@ -25,6 +25,8 @@ RewriteRule ^blogDetails/([0-9]+)$ pages/blog/details.php?blog_id=$1 [L]
 
 # User Navigation
 RewriteRule ^u/dashboard$ account/dashboard/user/index.php [L]
+RewriteRule ^u/comments$ account/dashboard/user/userComments.php [L]
+RewriteRule ^u/account$ account/dashboard/user/account.php [L]
 
 
 
@@ -38,5 +40,6 @@ RewriteRule ^a/deleteUser/([0-9]+)$ account/dashboard/admin/components/deletePop
 # RewriteRule ^a/deleteUserConfirm/([0-9]+)$ account/dashboard/admin/config/deleteUser.php?uid=$1 [L]
 RewriteRule ^a/deactivateUser/([0-9]+)$ account/dashboard/admin/config/deactivateUser.php?uid=$1 [L]
 RewriteRule ^a/activateUser/([0-9]+)$ account/dashboard/admin/config/activateUser.php?uid=$1 [L]
+RewriteRule ^a/editUser/([0-9]+)$ account/dashboard/admin/pages/editUser.php?uid=$1 [L]
 
 

@@ -5,7 +5,8 @@
     include '../../account/auth/dbConfig.php';
 
     $blogID = $_GET['blog_id'];
-
+    $admin = $_SESSION['is_admin'];
+    echo $admin;
     $blogDetails = $conn->prepare('SELECT 
     b.id,
     b.title,
@@ -101,6 +102,9 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                     <!-- this is the column that will diplay if they are not loggin in -->
                     <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
                 <div class="px-8 mb-4 text-center">
+                <?php if ($admin == 1): ?>
+                    <h3 class="pt-4 mb-2 text-2xl">You cannot comment whilst signed in as admin</h3>
+                    <?php else: ?>
                     <h3 class="pt-4 mb-2 text-2xl">Leave a comment</h3>
                     <p class="mb-4 text-sm text-gray-700">
                         Your post will be visible once it as been approved by our admin
@@ -133,6 +137,7 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                         </button>
                     </form>
                 </div>  
+                <?php endif ?>
             </div>
 
                 </div>

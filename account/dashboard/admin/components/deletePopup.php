@@ -3,7 +3,19 @@ $userId = $_GET['uid'];
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!--  -->
+<!-- This code is a PHP script that generates an HTML modal dialog box with two buttons, "Cancel" and "Delete". 
+The modal box has a background image from a URL, an "Are you sure" heading, and a message asking the user if they 
+really want to delete their account. The user ID is fetched from the URL query string using the $_GET function and
+displayed in the message using <?= $userId ?>. -->
+
+<!-- The "Cancel" button triggers a redirect to the ../../deleteUser/ URL, passing the user ID as a parameter.
+ The "Delete" button triggers a redirect to the ../../account/dashboard/admin/config/deleteUser.php?uid= URL, 
+ also passing the user ID as a parameter. -->
+
+<!-- The modal box is styled using Tailwind CSS classes and includes a "confirm-delete" class on the
+ "Delete" button and a "cancel" class on the "Cancel" button, which can be used for custom CSS styling 
+ or JavaScript event handling. -->
+
 <div id="delete_modal" class="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1623600989906-6aae5aa131d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1582&q=80);">
     <div class="absolute bg-black opacity-80 inset-0 z-0"></div>
     <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">

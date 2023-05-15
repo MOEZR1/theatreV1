@@ -2,8 +2,8 @@
 
 
 $hn = "localhost";
-$un = "karen_admin";
-$pw = "*Zl5rx]DEk1kbhm0";
+$un = "moezr_admin";
+$pw = "u74Y]NN.dI-(YAlq";
 $db = "theatre";
 
 // Create database connection
@@ -16,3 +16,4 @@ if ($conn->connect_error) {
 
 
 ?>
+

@@ -24,15 +24,9 @@ $blog->bind_result($blogID, $blogTitle, $blogContent, $blogCreated, $imgPath, $s
 echo $blogID;
 ?>
 <div class="pt-12" style="background-image: url('<?= ROOT_DIR ?>assets/images/login_bg.jpg'); background-size: cover; background-position: center;">
-  <!-- only show if admin -->
-  <?php if (isset($_SESSION['loggedin']) == TRUE && ($_SESSION['is_admin']) == 1): ?>
-  <div class="mt-3 flex items-end justify-center mb-10">
-    <div class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-      <button onclick="window.location.href='a/addBlog';" class="text-sm">ADD BLOG ARTICLE</button>
-    </div>
-  </div>
-  <?php endif ?>
+ 
 <h1 class="text-center text-2xl font-bold text-white">All Blog Articles</h1>
+
 
 
 <!-- Tab Menu -->
@@ -63,9 +57,23 @@ echo $blogID;
 		</svg>
 		<span>Opera</span>
 	</a>
+   <!-- only show if admin -->
+ <?php if (isset($_SESSION['loggedin']) == TRUE && ($_SESSION['is_admin']) == 1): ?>
+  <a rel="noopener noreferrer" href="a/addBlog"  class="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-white">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+			<circle cx="12" cy="12" r="10"></circle>
+			<polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+		</svg>
+		<span>ADD NEW BLOG </span>
+  </a>
+
+  <?php endif ?>
+
 </div>
 
   </div>
+
+
 <!-- Product List -->
 <section class="py-10 bg-gray-100">
   <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

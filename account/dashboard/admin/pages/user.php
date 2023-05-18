@@ -41,13 +41,12 @@ $users->bind_result($userId, $userName, $userEmail, $userActive, $admin);
   <div class="container w-full md:w-4/5  mx-auto px-2">
 
 		<!--Title-->
-	
-    <h1>ALL USERS</h1>  
+
 
 
 		<!--Card-->
 		<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-    <button onclick="window.location.href='./addUser.php';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">ADD USER</button>
+    <button onclick="window.location.href='addUser';" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">ADD NEW ADMIN</button>
 
 
 			<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -176,9 +175,6 @@ $users->bind_result($userId, $userName, $userEmail, $userActive, $admin);
 
 	</div>
 	<!--/container-->
-
-
-
 
 
 	<!-- jQuery -->

@@ -4,9 +4,9 @@
 ?>
 
 <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
-    <div class="bg-black text-white rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
+    <div class="bg-gray-800 text-white rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
         <div class="md:flex w-full">
-            <div class="hidden md:block w-1/2 bg-indigo-500 py-10 px-10" style="background-image: url(<?php ROOT_DIR ?>assets/images/login_bg.jpg); background-position: right;">
+            <div class="hidden md:block w-1/2 bg-indigo-500 py-10 px-10" style="background-image: url(<?php ROOT_DIR ?>assets/images/main1.jpg); background-position: right;">
             </div>
             <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
                 <div class="text-center mb-10">
@@ -52,12 +52,16 @@
                     </div>
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
-                            <button class="block w-full max-w-xs mx-auto bg-yellow-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" type="submit">REGISTER NOW</button>
+                            <button class="block w-full max-w-xs mx-auto bg-red-900 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" type="submit">REGISTER NOW</button>
                         </div>
                     </div>
+                    <p class="text-gray-300">
+                      Already have an account? <a href="<?= ROOT_DIR ?>login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                  </p>
                 </div>
                 </form>
             </div>
+            
         </div>
     </div>
 </div>    

@@ -69,7 +69,7 @@
             </div>
           </div>
         </div>
-        <input type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+        <input type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-900 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-indigo-800">
           
         <hr class="mt-6 border-b-1 border-blueGray-300">
 

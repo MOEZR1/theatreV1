@@ -4,8 +4,8 @@
   
   <?php include '../../../components/navigation.php'; ?>
   <div class="px-3 md:lg:xl:px-40   border-t border-b py-20 bg-opacity-10" style="background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png') ;">
-        <div onclick="window.location.href='pages/user.php';" class="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border ">
-            <div
+        <div  class="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border ">
+            <div onclick="window.location.href='allUsers'"
                 class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b hover:bg-slate-50 cursor-pointer">
                 <span class="p-5 rounded-full bg-red-500 text-white shadow-lg shadow-red-200"><svg
                         xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
@@ -17,7 +17,7 @@
                 <p class="mt-2 text-sm text-slate-500">View, Delete and Update current users.</p>
             </div>
 
-            <div
+            <div onclick="window.location.href='pendingComments'"
                 class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b hover:bg-slate-50 cursor-pointer">
                 <span class="p-5 rounded-full bg-orange-500 text-white shadow-lg shadow-orange-200"><svg
                         xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
@@ -32,7 +32,8 @@
                 <p class="mt-2 text-sm text-slate-500">Publish Reviews.</p>
             </div>
 
-            <div class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-b hover:bg-slate-50 cursor-pointer">
+            <div onclick="window.location.href='addBlog'"
+            class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-b hover:bg-slate-50 cursor-pointer">
                 <span class="p-5 rounded-full bg-yellow-500 text-white shadow-lg shadow-yellow-200"><svg
                         xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="1.5">

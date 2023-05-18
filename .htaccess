@@ -20,6 +20,8 @@ RewriteEngine On
 RewriteRule ^login$ pages/login/index.php [L]
 RewriteRule ^register$ pages/register/index.php [L]
 RewriteRule ^blogs$ pages/blog/index.php [L]
+RewriteRule ^contact$ pages/contact/index.php [L]
+RewriteRule ^about$ pages/about/index.php [L]
 RewriteRule ^blogDetails/([0-9]+)$ pages/blog/details.php?blog_id=$1 [L]
 
 
@@ -34,6 +36,7 @@ RewriteRule ^u/account$ account/dashboard/user/account.php [L]
 RewriteRule ^a/dashboard$ account/dashboard/admin/index.php [L]
 RewriteRule ^a/allUsers$ account/dashboard/admin/pages/user.php [L]
 RewriteRule ^a/addBlog$ account/dashboard/admin/pages/addBlog.php [L]
+RewriteRule ^a/addUser$ account/dashboard/admin/pages/addUser.php [L]
 RewriteRule ^a/pendingComments$ account/dashboard/admin/pages/pendingComments.php [L]
 RewriteRule ^a/commentDetails/([0-9]+)$ account/dashboard/admin/pages/commentDetails.php?cid=$1 [L]
 RewriteRule ^a/deleteUser/([0-9]+)$ account/dashboard/admin/components/deletePopup.php?uid=$1 [L]

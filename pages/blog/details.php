@@ -6,6 +6,7 @@
 
     $blogID = $_GET['blog_id'];
     $admin = $_SESSION['is_admin'];
+ 
     echo $admin;
     $blogDetails = $conn->prepare('SELECT 
     b.id,
@@ -115,8 +116,8 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                         <input type="hidden" name="fk_user_id" value="<?= $userID ?>">
                         <input type="hidden" name="fk_blog_id" value="<?= $blogID ?>">
                     
-                        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label class="block mb-2 text-sm font-bold text-gray-700" for="heading">
+                        <div class="py-2 px-4 bg-black sqaure-b-lg dark:bg-gray-700">
+                            <label class="block mb-2 text-sm font-bold text-white" for="heading">
 									Comment Heading
 								</label>
 								<input
@@ -127,14 +128,15 @@ $comments->bind_result($cID, $cHeading, $comment, $cDateAdded, $pending, $userna
                                     name="heading"
 								/>
                         </div>
-                        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
+                        <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-700">
                             <label for="editor" class="sr-only"></label>
                             <textarea name="comment" id="editor" rows="8" class="block px-0 w-full border rounded shadow py-5 px-5 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Add your comment" required></textarea>
                         </div>
-                        <button 
-                        type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                            Comment
-                        </button>
+                        <div class="flex justify-center items-center">
+                            <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                                Comment
+                            </button>
+                        </div>
                     </form>
                 </div>  
                 <?php endif ?>

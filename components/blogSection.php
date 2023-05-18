@@ -22,8 +22,11 @@ echo $blogID;
 <!-- Product List -->
 <section class="py-10 bg-gray-100">
 <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-3xl font-semibold text-gray-800 justify-center capitalize lg:text-4xl dark:text-white">Latest Articles</h1>
+  <div class="text-center">
+    <h1 class="text-3xl font-semibold text-gray-800 justify-center capitalize lg:text-4xl dark:text-black">Latest Articles</h1>
+  </div>
 </div>
+
   <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     
   <?php while ($blog->fetch()): ?>
